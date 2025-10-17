@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HBD ><</title>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;700&display=swap" rel="stylesheet">
+    <title>Surprise</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Prompt', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
@@ -264,53 +264,6 @@
             margin-bottom: 30px;
         }
         
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .input-field {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            padding: 15px;
-            color: white;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-        
-        .input-field:focus {
-            outline: none;
-            border-color: #ff6b6b;
-            box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
-        }
-        
-        .password-input {
-            letter-spacing: 5px;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-        }
-        
-        .submit-btn {
-            background: linear-gradient(135deg, #ff6b6b, #ffa36c);
-            border: none;
-            border-radius: 10px;
-            padding: 15px;
-            color: white;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
-        }
-        
         .floating-elements {
             position: fixed;
             top: 0;
@@ -522,6 +475,7 @@
                     <div class="countdown-label">วินาที</div>
                 </div>
             </div>
+        </div>
         
         <div class="card message-section">
             <h2 class="message-title">Read meeee</h2>
@@ -538,18 +492,11 @@
         </div>
         
         <div class="card memory-section">
-            <h2 class="memory-title">มีอะไรให้ดูวววว</h2>
-            <p class="memory-subtitle">ลองพิมพ์ชื่อเล่นแก กับรหัสดูสิคั้บบ</p>
+            <h2 class="memory-title">เค้ารักเธอน้ะะะ</h2>
+            <p class="memory-subtitle">ขอให้มีความสุขในวันเกิดน้ะะะะ ❤️</p>
             
-            <div class="input-group">
-                <input type="text" class="input-field" placeholder="Name" id="recipientName">
-                <input type="password" class="input-field password-input" placeholder="Password" id="password" maxlength="6">
-                <button class="submit-btn" id="submitBtn">ยืนยัน</button>
-            </div>
-            
-            <div class="success-message hidden" id="successMessage">
-                <h3>เค้ารักเธอม้ากกกกกกๆๆๆๆๆ</h3>
-                <p>ขอให้มีความสุขกับเว็บนี้น้ะะะ</p>
+            <div class="success-message">
+                <h3>Have a good day <3</h3>
             </div>
         </div>
     </div>
@@ -581,8 +528,8 @@
             }
         }
         
-        // ฟังก์ชันนับเวลาจากวันที่ 18 ตุลาคม 2568
-       function startCountdown() {
+        // ฟังก์ชันนับเวลาจากวันที่ 18 ตุลาคม 2554
+        function startCountdown() {
             const targetDate = new Date('October 18, 2011 00:00:00').getTime();
             
             function updateCountdown() {
@@ -617,75 +564,11 @@
             setInterval(updateCountdown, 1000);
         }
         
-        // ตรวจสอบรหัสผ่าน
-        function setupPasswordCheck() {
-            const submitBtn = document.getElementById('submitBtn');
-            const passwordInput = document.getElementById('password');
-            const successMessage = document.getElementById('successMessage');
-            const recipientName = document.getElementById('recipientName');
-            
-            submitBtn.addEventListener('click', function() {
-                const name = recipientName.value.trim();
-                const password = passwordInput.value.trim();
-                
-                if (!name) {
-                    alert('กรุณากรอกชื่อผู้รับของขวัญ');
-                    return;
-                }
-                
-                if (password.length !== 6) {
-                    alert('กรุณากรอกรหัสผ่าน 6 หลัก');
-                    return;
-                }
-                
-                // ตรวจสอบรหัสผ่าน (ในที่นี้รหัสผ่านคือ 181054)
-                if (password === '181054') {
-                    successMessage.classList.remove('hidden');
-                    successMessage.querySelector('h3').textContent = `เค้ารักแกม้ากกกกกๆๆๆๆเลยนะ${name} ❤️❤️`;
-                    
-                    // สร้าง confetti จำลอง
-                    createConfetti();
-                } else {
-                    alert('รหัสผ่านไม่ถูกต้อง กรุณาลองอีกครั้ง');
-                    passwordInput.value = '';
-                    passwordInput.focus();
-                }
-            });
-        }
-        
-        // สร้าง confetti จำลอง
-        function createConfetti() {
-            const container = document.getElementById('floatingElements');
-            const colors = ['#ff6b6b', '#ffa36c', '#ffd32d', '#05c46b', '#0fbcf9'];
-            
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('floating-element');
-                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.width = '10px';
-                confetti.style.height = '10px';
-                confetti.style.left = `${Math.random() * 100}vw`;
-                confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
-                confetti.style.animationDelay = '0s';
-                
-                container.appendChild(confetti);
-                
-                // ลบ confetti หลังจาก animation เสร็จ
-                setTimeout(() => {
-                    if (confetti.parentNode) {
-                        confetti.parentNode.removeChild(confetti);
-                    }
-                }, 5000);
-            }
-        }
-        
         // เริ่มต้นการทำงานเมื่อโหลดหน้าเว็บ
         document.addEventListener('DOMContentLoaded', function() {
             createFloatingElements();
             startCountdown();
-            setupPasswordCheck();
         });
     </script>
 </body>
-
 </html>
